@@ -1,0 +1,9 @@
+<%= link_to "トップページへ", "/expenses" ,class:"header-logo" %>
+<div class="ww">
+  <%= "●今月の#{current_user.nickname}さんの支出" %>
+  <% @records.each do |key, value| %>
+    <div class="expense-key">
+      <%= "#{key}:#{value}" %>
+    </div>
+  <% end %>
+<div>

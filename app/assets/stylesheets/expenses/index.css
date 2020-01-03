@@ -1,0 +1,19 @@
+
+.content{
+  background-image: url(money.jpg);
+  background-size: cover;
+  height:100vh;
+}
+.user_nav {
+  float:right;
+}
+
+.mypage{
+  float:right;
+}
+
+.pie {
+  position:absolute;
+  top:32%;
+  left:5%;
+}

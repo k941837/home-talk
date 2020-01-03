@@ -1,0 +1,10 @@
+<div class="apoint">
+  <%=form_for(@expense, local: true, method: 'post')do |f| %>
+    <%= f.collection_select :expensecategory_id, Expensecategory.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
+    <%= f.text_field :money, class: "expense-money", placeholder: "金額" %>
+
+    <div class="submit-btn">
+      <%= f.submit "登録！", class: "submit-btn" %>
+    </div>
+  <% end %>
+</div>
