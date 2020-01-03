@@ -3,6 +3,8 @@ class Income < ApplicationRecord
 
 
   belongs_to :user
-  belongs_to :incomecategory
+  belongs_to_active_hash :incomecategory
+  belongs_to_active_hash :month
+  belongs_to_active_hash :year
 
 end
