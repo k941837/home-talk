@@ -1,6 +1,8 @@
 class CreateIncomes < ActiveRecord::Migration[5.2]
   def change
     create_table :incomes do |t|
+      t.integer :month_id
+      t.integer :year_id
       t.integer :incomecategory_id
       t.integer :money    
       t.references :user, null: false, foreign_key: true

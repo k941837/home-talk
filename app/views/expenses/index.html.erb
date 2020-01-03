@@ -1,52 +1,59 @@
-<div class="header">
-  <h1 class="header-logo">
-    <%= link_to 'HOME TALK!', "/expenses" ,class:"header-logo" %>
-  </h1>
-  <% if user_signed_in? %>
-  <div class="user_nav grid-6">
-      <span><%= current_user.nickname %>
-        <div class="mypage">
-          <%= link_to "マイページ", "/users/#{current_user.id}" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        </div>
-      </span>
-  </div>
-  <% else %>
-  <div class="mypage">
-    <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-    <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-  </div>
-  <% end %>
-</div>
-
-<div class="content">
-  <div class="content-box">
-    <div class="income-logo">
-      <%= link_to '収入登録', "/incomes/new" ,class:"income-logo"%>
+<div class="body-content">
+  <div class="header">
+    <h1 class="header-logo">
+      <%= link_to 'HOME TALK!', "/expenses" ,class:"header-logo" %>
+    </h1>
+    <% if user_signed_in? %>
+    <div class="user_nav grid-6">
+        <span><%= current_user.nickname %>さん
+          <div class="mypage">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </div>
+        </span>
     </div>
-    <div class="expense-logo">
-      <%= link_to '支出登録', "/expenses/new" ,class:"expense-logo"%>
+    <% else %>
+    <div class="mypage">
+      <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+      <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="content">
+    <div class="content-box">
+      <%=form_with url: '/expenses/search_expense', local: true, method: 'get' do |f| %>
+        <%= f.collection_select :year_id, Year.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
+        <%= f.collection_select :month_id, Month.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
+        <%= f.submit "月別検索", class: "submit-btn" %>
+      <% end %>
+      <div class="income-logo">
+        <%= link_to '収入登録', "/incomes/new" ,class:"income-logo"%>
+      </div>
+      <div class="expense-logo">
+        <%= link_to '支出登録', "/expenses/new" ,class:"expense-logo"%>
+      </div>
+      
+    </div>
+    <% d = Date.today; %>
+    
+    <%# <%= Expense.current_user.sum(:money) %> 
+    <div class="total">
+      今月(<%= d.month %>月)の合計収入は
+      <%= @month_incomes.sum(:money).round %>円
+      です。
     </div>
     
-  </div>
-  <%# <%= Expense.current_user.sum(:money) %> 
-  <div class="total">
-    今月の合計収入は
-    <%= current_user.incomes.sum(:money).round %>円
-    です。
-  </div>
-  
-  <div class="total">
-    今月の合計支出は
-    <%= current_user.expenses.sum(:money) %>円
-    です。
-  </div>
-  
-  <div class="pie">
-    <%= pie_chart @chart %>
-  </div>
+    <div class="total">
+      今月(<%= d.month %>月)の合計支出は
+      <%= @month_expenses.sum(:money) %>円
+      です。
+    </div>
+    
+    <div class="pie">
+      <%= pie_chart @chart %>
+    </div>
 
-
+  </div>
 </div>
 
 

@@ -13,6 +13,8 @@
 ActiveRecord::Schema.define(version: 2019_12_26_032857) do
 
   create_table "expenses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "month_id"
+    t.integer "year_id"
     t.integer "expensecategory_id"
     t.integer "money"
     t.bigint "user_id"
@@ -22,6 +24,8 @@ ActiveRecord::Schema.define(version: 2019_12_26_032857) do
   end
 
   create_table "incomes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "month_id"
+    t.integer "year_id"
     t.integer "incomecategory_id"
     t.integer "money"
     t.bigint "user_id", null: false
