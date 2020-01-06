@@ -34,6 +34,11 @@ class ExpensesController < ApplicationController
     redirect_to expenses_path
   end
 
+  def destroy
+    expense = Expense.find(params[:id])
+    expense.destroy
+    redirect_to expenses_path
+  end
 
   def search_expense
 
@@ -51,7 +56,6 @@ class ExpensesController < ApplicationController
     end
     @ppp = "#{Month.find(params[:month_id]).name}の合計収入は"
     @qqq = "#{Month.find(params[:month_id]).name}の合計支出は"
-
   end
   
 

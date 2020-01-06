@@ -1,12 +1,13 @@
 <div class="body-content">
   <div class="header">
     <h1 class="header-logo">
-      <%= link_to 'HOME TALK!', "/expenses" ,class:"header-logo" %>
+      <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
     </h1>
     <% if user_signed_in? %>
     <div class="user_nav grid-6">
         <span><%= current_user.nickname %>さん
           <div class="mypage">
+            <%= link_to "マイページ", user_path(@user.id), method: :get %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </div>
         </span>
@@ -26,11 +27,11 @@
         <%= f.collection_select :month_id, Month.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
         <%= f.submit "月別検索", class: "submit-btn" %>
       <% end %>
-      <div class="income-logo">
-        <%= link_to '収入登録', "/incomes/new" ,class:"income-logo"%>
+      <div class="btn btn-income">
+        <%= link_to '収入登録', "/incomes/new" ,class:"btn btn-income" %>
       </div>
       <div class="expense-logo">
-        <%= link_to '支出登録', "/expenses/new" ,class:"expense-logo"%>
+        <%= link_to '支出登録', "/expenses/new" ,class:"expense-logo" %>
       </div>
       
     </div>
@@ -52,6 +53,7 @@
     <div class="pie">
       <%= pie_chart @chart %>
     </div>
+
 
   </div>
 </div>

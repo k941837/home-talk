@@ -1,9 +1,13 @@
 <%= link_to "トップページへ", "/expenses" ,class:"header-logo" %>
 <div class="ww">
   <%= "●今月の#{current_user.nickname}さんの支出" %>
-  <% @records.each do |key, value| %>
+  <% @month_expenses.each do |key| %>
     <div class="expense-key">
-      <%= "#{key}:#{value}" %>
+    <%= key.expensecategory.name%>
+    <%= key.money%>
+    <%# <%= key.money%> 
+      <%# <%= "#{key}:#{value}" %> 
+      <%= link_to "削除", expense_path(key.id), method: :delete %>
     </div>
   <% end %>
 <div>
