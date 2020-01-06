@@ -16,9 +16,9 @@ class ExpensesController < ApplicationController
 
     @chart = {}
     unless @user.expenses[0].blank?
-      @month_expenses.each do |b|
+      @month_expenses.group(:expensecategory_id).sum(:money).each do |b|
         # @chart = { @user.expenses[0].expensecategory.name => @user.expenses[0].money , @user.expenses[1].expensecategory.name => @user.expenses[1].money }
-        @chart.store(b.expensecategory.name, b.money)
+        @chart.store(Expensecategory.find(b[0]).name, b[1])
       end
     end
   end
