@@ -16,9 +16,9 @@ class ExpensesController < ApplicationController
 
     @chart = {}
     unless @user.expenses[0].blank?
-      @month_expenses.each do |b|
+      @month_expenses.group(:expensecategory_id).sum(:money).each do |b|
         # @chart = { @user.expenses[0].expensecategory.name => @user.expenses[0].money , @user.expenses[1].expensecategory.name => @user.expenses[1].money }
-        @chart.store(b.expensecategory.name, b.money)
+        @chart.store(Expensecategory.find(b[0]).name, b[1])
       end
     end
   end
@@ -34,6 +34,11 @@ class ExpensesController < ApplicationController
     redirect_to expenses_path
   end
 
+  def destroy
+    expense = Expense.find(params[:id])
+    expense.destroy
+    redirect_to expenses_path
+  end
 
   def search_expense
 
@@ -51,7 +56,6 @@ class ExpensesController < ApplicationController
     end
     @ppp = "#{Month.find(params[:month_id]).name}の合計収入は"
     @qqq = "#{Month.find(params[:month_id]).name}の合計支出は"
-
   end
   
 
