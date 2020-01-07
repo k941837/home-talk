@@ -7,3 +7,56 @@
 .uuu{
   margin:20px;
 }
+
+.ddd{
+  display:flex;
+}
+.monthcomment{
+  width:100%;
+}
+.uuu{
+  margin-top: -20px;
+  margin-left: 200px;
+}
+
+
+
+
+.mmm{
+  display: none;
+}
+.nnn{
+  display: none;
+}
+.bbb{
+  display: none;
+}
+.vvv{
+  display: none;
+}
+.ccc{
+  display: none;
+}
+.xxx{
+  display: none;
+}
+.zzz{
+  display: none;
+}
+.lll{
+  display: none;
+}
+.kkk{
+  display: none;
+}
+.jjj{
+  display: none;
+}
+.hhh{
+  display: none;
+}
+
+.active_cat{
+  display: block;
+}
+
