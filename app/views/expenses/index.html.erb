@@ -1,26 +1,32 @@
 <div class="body-content">
   <div class="header">
     <h1 class="header-logo">
+      <i class="fas fa-home faa-bounce animated"></i>
       <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
     </h1>
     <% if user_signed_in? %>
     <div class="user_nav grid-6">
         <span><%= current_user.nickname %>さん
           <div class="mypage">
-            <%= link_to "マイページ", user_path(@user.id), method: :get %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <%= button_to "マイページ", user_path(@user.id), method: :get %>
+            <%= button_to "ログアウト", destroy_user_session_path, method: :delete %>
           </div>
         </span>
     </div>
     <% else %>
     <div class="mypage">
-      <%= link_to "ログイン", new_user_session_path, class: 'post' %>
-      <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+      <%= button_to "ログイン", new_user_session_path, class: 'post' %>
+      <%= button_to "新規登録", new_user_registration_path, class: 'post' %>
     </div>
     <% end %>
   </div>
 
   <div class="content">
+    <% d = Date.today; %>
+    <% weeks = ["月","火","水","木","金","土","日"] %>
+    <% index = d.strftime("%u").to_i %>
+    <% str = d.strftime("%Y年 %m月 %d日 #{weeks[index - 1]}曜日") %>
+    今日は <%= str %> です。
     <div class="content-box">
       <%=form_with url: '/expenses/search_expense', local: true, method: 'get' do |f| %>
         <%= f.collection_select :year_id, Year.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
@@ -28,9 +34,11 @@
         <%= f.submit "月別検索", class: "submit-btn" %>
       <% end %>
       <div class="btn btn-income">
+        <i class= " fas fa-yen-sign"></i>
         <%= link_to '収入登録', "/incomes/new" ,class:"btn btn-income" %>
       </div>
       <div class="expense-logo">
+        <i class="fas fa-shopping-cart"></i>
         <%= link_to '支出登録', "/expenses/new" ,class:"expense-logo" %>
       </div>
       

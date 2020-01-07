@@ -1,4 +1,11 @@
+.header{
+  background-image: url(rosemary.jpg);
+  background-size: cover;
+}
 
+.header-logo{
+  color:black;
+}
 .content{
   background-image: url(money.jpg);
   background-size: cover;
@@ -9,11 +16,19 @@
 }
 
 .mypage{
+  display:flex;
   float:right;
 }
 
 .pie {
   position:absolute;
-  top:32%;
+  top:40%;
   left:5%;
+}
+
+.btn-income{
+  color: blue;
+}
+.expense-logo{
+  color: red;
 }
