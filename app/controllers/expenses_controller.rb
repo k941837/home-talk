@@ -11,8 +11,8 @@ class ExpensesController < ApplicationController
     @expenses = Expense.all
     @user = current_user
     d = Date.today;
-    @month_expenses = @user.expenses.where(year_id:2, month_id:d.month )
-    @month_incomes = @user.incomes.where(year_id:2, month_id:d.month )
+    @month_expenses = @user.expenses.where(year_id:d.year, month_id:d.month )
+    @month_incomes = @user.incomes.where(year_id:d.year, month_id:d.month )
 
     @chart = {}
     unless @user.expenses[0].blank?

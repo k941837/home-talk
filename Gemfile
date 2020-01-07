@@ -65,3 +65,7 @@ gem 'devise'
 gem 'active_hash'
 gem 'chartkick'
 gem 'chartable'
+gem "font-awesome-rails"
+gem 'jquery-rails'
+
+

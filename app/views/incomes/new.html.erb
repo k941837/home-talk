@@ -1,4 +1,11 @@
+<div class="header">
+    <h1 class="header-logo">
+      <i class="fas fa-home faa-bounce animated"></i>
+      <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
+    </h1>
+</div>
 <div class="apoint">
+  収入の登録
   <%=form_for(@income, local: true, method: 'post')do |f| %>
     <%= f.collection_select :year_id, Year.all, :id, :name, {include_blank: "---"}, class: "input-form" %>
     <%= f.collection_select :month_id, Month.all, :id, :name, {include_blank: "---"}, class: "input-form" %>

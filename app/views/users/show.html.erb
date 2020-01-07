@@ -1,13 +1,38 @@
-<%= link_to "トップページへ", "/expenses" ,class:"header-logo" %>
-<div class="ww">
-  <%= "●今月の#{current_user.nickname}さんの支出" %>
-  <% @month_expenses.each do |key| %>
-    <div class="expense-key">
-    <%= key.expensecategory.name%>
-    <%= key.money%>
-    <%# <%= key.money%> 
-      <%# <%= "#{key}:#{value}" %> 
-      <%= link_to "削除", expense_path(key.id), method: :delete %>
+<div class="header">
+    <h1 class="header-logo">
+      <i class="fas fa-home faa-bounce animated"></i>
+      <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
+    </h1>
+</div>
+<div class="sss">
+  <div class="ttt">
+    <%= "●今月の#{current_user.nickname}さんの支出" %>
+    <% @month_expenses.each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%# <%= key.money%> 
+        <%# <%= "#{key}:#{value}" %> 
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+    合計 <%= @month_expenses.sum(:money) %>円
+  </div>
+
+  <div class="uuu">
+    <%= "●先月の#{current_user.nickname}さんの支出" %>
+    <% @last_month_expenses.each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%# <%= key.money%> 
+        <%# <%= "#{key}:#{value}" %> 
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+    <div class="ddd">
+      合計 <%= @last_month_expenses.sum(:money) %>円
     </div>
-  <% end %>
-<div>
+  </div>
+
+</div>
