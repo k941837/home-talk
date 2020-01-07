@@ -4,20 +4,134 @@
       <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
     </h1>
 </div>
+<div class="monthcomment">
+  <%= "●<今月の#{current_user.nickname}さんの支出>" %>
+</div>
 <div class="sss">
-  <div class="ttt">
-    <%= "●今月の#{current_user.nickname}さんの支出" %>
-    <% @month_expenses.each do |key| %>
+  <div class="iii">
+    <% @category.each do |key| %>
+      <div class="expense-key">
+        <%= key.name %>
+        <%= @month_expenses.where(expensecategory_id:key.id).sum(:money) %>円
+        <button id="category_show<%= key.id %>">詳細</button>
+      </div>
+    <% end %>
+    合計<%= @month_expenses.sum(:money) %>円(前月比：<%= @month_expenses.sum(:money).to_i*100 / @last_month_expenses.sum(:money).to_i %>%）
+  </div>
+  <div class="mmm">
+    <% @month_expenses.where(expensecategory_id:1).each do |key| %>
       <div class="expense-key">
       <%= key.expensecategory.name%>
       <%= key.money%>
-      <%# <%= key.money%> 
-        <%# <%= "#{key}:#{value}" %> 
+      <%= key.created_at.day %>日
+      <%# <%= key.created_at.strftime("%Y/%m/%d %H:%M") %> 
+      <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+    
+  </div>
+  <div class="nnn">
+    <% @month_expenses.where(expensecategory_id:2).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
         <%= link_to "削除", expense_path(key.id), method: :delete %>
       </div>
     <% end %>
-    合計 <%= @month_expenses.sum(:money) %>円
   </div>
+  <div class="bbb">
+    <% @month_expenses.where(expensecategory_id:3).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="vvv">
+    <% @month_expenses.where(expensecategory_id:4).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="ccc">
+    <% @month_expenses.where(expensecategory_id:5).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="xxx">
+    <% @month_expenses.where(expensecategory_id:6).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="zzz">
+    <% @month_expenses.where(expensecategory_id:7).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="lll">
+    <% @month_expenses.where(expensecategory_id:8).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="kkk">
+    <% @month_expenses.where(expensecategory_id:9).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="jjj">
+    <% @month_expenses.where(expensecategory_id:10).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+  <div class="hhh">
+    <% @month_expenses.where(expensecategory_id:11).each do |key| %>
+      <div class="expense-key">
+      <%= key.expensecategory.name%>
+      <%= key.money%>
+      <%= key.created_at.day %>日
+      
+        <%= link_to "削除", expense_path(key.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+
 
   <div class="uuu">
     <%= "●先月の#{current_user.nickname}さんの支出" %>
