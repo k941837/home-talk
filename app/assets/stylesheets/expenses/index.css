@@ -1,5 +1,5 @@
 .header{
-  background-image: url(rosemary.jpg);
+  background-image: url(images/rosemary.jpg);
   background-size: cover;
 }
 
@@ -7,7 +7,7 @@
   color:black;
 }
 .content{
-  background-image: url(money.jpg);
+  background-image: url('/images/money.jpg');
   background-size: cover;
   height:100vh;
 }

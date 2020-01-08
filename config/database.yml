@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: home-talk_production
-  username: home-talk
-  password: <%= ENV['HOME-TALK_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DATABASE'] %> 
+  username: <%= ENV['ENV_NAME'] %>
+  password: <%= ENV['PASSWORD'] %>
