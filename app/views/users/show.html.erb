@@ -24,7 +24,6 @@
       <%= key.expensecategory.name%>
       <%= key.money%>
       <%= key.created_at.day %>日
-      <%# <%= key.created_at.strftime("%Y/%m/%d %H:%M") %> 
       <%= link_to "削除", expense_path(key.id), method: :delete %>
       </div>
     <% end %>
@@ -135,12 +134,10 @@
 
   <div class="uuu">
     <%= "●先月の#{current_user.nickname}さんの支出" %>
-    <% @last_month_expenses.each do |key| %>
+    <% @category.each do |key| %>
       <div class="expense-key">
-      <%= key.expensecategory.name%>
-      <%= key.money%>
-      <%# <%= key.money%> 
-        <%# <%= "#{key}:#{value}" %> 
+      <%= key.name %>
+      <%= @last_month_expenses.where(expensecategory_id:key.id).sum(:money) %>円
         <%= link_to "削除", expense_path(key.id), method: :delete %>
       </div>
     <% end %>
@@ -150,3 +147,4 @@
   </div>
 
 </div>
+
