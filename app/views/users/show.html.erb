@@ -16,7 +16,7 @@
         <button id="category_show<%= key.id %>">詳細</button>
       </div>
     <% end %>
-    合計<%= @month_expenses.sum(:money) %>円(前月比：<%= @month_expenses.sum(:money).to_i*100 / @last_month_expenses.sum(:money).to_i %>%）
+    合計<%= @month_expenses.sum(:money) %>円(前月比：<%= @month_expenses.sum(:money).to_i*100 / @last_month_expenses.sum(:money).to_i if @last_month_expenses.sum(:money).to_i != 0 %>%）
   </div>
   <div class="mmm">
     <% @month_expenses.where(expensecategory_id:1).each do |key| %>
