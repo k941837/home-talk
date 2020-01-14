@@ -1,0 +1,31 @@
+<div class="header">
+    <h1 class="header-logo">
+      <i class="fas fa-home faa-bounce animated"></i>
+      <%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>
+    </h1>
+</div>
+<div class="memos">
+  <div class="memo">
+    <div class="memo1">
+      支出メモ
+      <%=form_for(@memo, url: user_memos_path(@user.id),local: true, method: 'post')do |f| %>
+        <%= f.text_field :content, class: "memos-content", placeholder: "収支情報メモ書き欄" %>
+
+        <div class="memo-submit">
+          <%= f.submit "メモ", class: "memo-submit" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="memo2">
+      <% if @memos.count != 0 %>
+        <% @memos.each do |m| %>
+        <div class="m-content">
+          <%= m.content %>
+          <%= link_to "削除", user_memo_path(@user.id,m.id), method: :delete %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to 'Home PAY!', "/expenses" ,class:"header-logo" %>

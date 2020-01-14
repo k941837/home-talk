@@ -58,6 +58,53 @@
       です。
     </div>
     
+    <% if (@month_incomes.sum(:money).round) - (@month_expenses.sum(:money).round) > 50000 %>
+     
+        <div class="kao">
+          <i class="far fa-smile-beam fa-5x"></i>
+          <div class="kao-a">
+            貯金くん
+          </div>
+          <div class="kao-aa">
+            （現状の貯蓄状況、良好）
+          </div>
+        </div>
+        <% elsif (@month_incomes.sum(:money).round) - (@month_expenses.sum(:money).round) > 20000 %>
+        <div class="kao">
+          <i class="far fa-meh fa-5x"></i>
+          <div class="kao-b">
+            貯金くん
+          </div>
+          <div class="kao-bb">
+            （現状の貯蓄状況、普通）
+          </div>
+        </div>
+        <% elsif (@month_incomes.sum(:money).round) - (@month_expenses.sum(:money).round) > 0 %>
+        <div class="kao">
+          <i class="far fa-sad-tear fa-5x"></i>
+          <div class="kao-c">
+            貯金くん
+          </div>
+          <div class="kao-cc">
+            （現状の貯蓄状況、ピンチ！）
+          </div>
+          
+        </div>
+      <% end %>
+      <div class="aaaa">
+        <div class="bbbb">
+          （良好：当月貯蓄５万以上）
+        </div>
+        <div class="cccc">
+          （普通：当月貯蓄２万以上）
+        </div>
+        <div class="dddd">
+          （ピンチ：当月貯蓄２万以下）
+        </div>
+      </div>
+
+
+
     <div class="pie">
       <%= pie_chart @chart %>
     </div>

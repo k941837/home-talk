@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     end
   end
   resources :incomes
-  resources :users
+  resources :users do
+    resources :memos, only: [:index, :create, :destroy]
+  end
 end
 
