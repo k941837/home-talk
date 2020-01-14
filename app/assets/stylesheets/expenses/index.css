@@ -32,3 +32,30 @@
 .expense-logo{
   color: red;
 }
+
+.kao{
+  position: absolute;
+  top:15%;
+  left:40%;
+  color: blue;
+  text-align: center;
+}
+.kao-a{
+  text-align: center;
+}
+.kao-b{
+  text-align: center;
+}
+.kao-c{
+  text-align: center;
+}
+.aaaa{
+  font-size: 5px;
+  display:none;
+  position:absolute;
+  top:20%;
+  left:56%;
+}
+.active_cat{
+  display: block;
+}
